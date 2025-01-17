@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import controller.MainController;
+
 public class MainFrame extends JFrame {
     public MainFrame() {
         setSize(1200, 800);
@@ -32,6 +34,7 @@ public class MainFrame extends JFrame {
         this.add(rightPanel);
 
         Color MainColor = Color.decode("#6096B4");
+        MainController controller = new MainController(this);
 
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(null);
@@ -41,7 +44,7 @@ public class MainFrame extends JFrame {
         JLabel metroLabel = new JLabel("<html><div style='text-align: center;'>QUẢN LÝ VẬN HÀNH<br>METRO</div></html>");
         metroLabel.setForeground(Color.white);
         metroLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
-        metroLabel.setBounds(30, 15, 270, 80);
+        metroLabel.setBounds(30, 14, 270, 80);
 
         titlePanel.add(metroLabel);
         leftPanel.add(titlePanel);
@@ -52,14 +55,36 @@ public class MainFrame extends JFrame {
         ChucNangPanel.setLayout(null);
         leftPanel.add(ChucNangPanel);
 
+        JPanel TuyenDuongPanel = new JPanel();
+        TuyenDuongPanel.setBounds(10, 10, 280, 80);
+        TuyenDuongPanel.setLayout(null);
+        TuyenDuongPanel.setBackground(Color.decode("#93BFCF"));
+        ChucNangPanel.add(TuyenDuongPanel);
+
+        TuyenDuongPanel.addMouseListener(controller);
+
+        JLabel TuyenDuongLabel = new JLabel("TUYẾN ĐƯỜNG");
+        TuyenDuongLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        // TuyenDuongLabel.setForeground(Color.white);
+        TuyenDuongLabel.setBounds(80, 22, 160, 30);
+        TuyenDuongPanel.add(TuyenDuongLabel);
+
+        ImageIcon iconTuyenDuong = new ImageIcon(
+                new ImageIcon("./img/route.png").getImage().getScaledInstance(40, 40,
+                        Image.SCALE_SMOOTH));
+        JLabel TuyenDuongIcon = new JLabel(iconTuyenDuong, JLabel.CENTER);
+        TuyenDuongIcon.setForeground(Color.white);
+        TuyenDuongIcon.setBounds(20, 20, 40, 40);
+        TuyenDuongPanel.add(TuyenDuongIcon);
+
         JPanel DangXuatPanel = new JPanel();
-        DangXuatPanel.setBounds(10, 560, 280, 80);
+        DangXuatPanel.setBounds(10, 550, 280, 80);
         DangXuatPanel.setLayout(null);
         DangXuatPanel.setBackground(Color.decode("#93BFCF"));
         ChucNangPanel.add(DangXuatPanel);
 
         JLabel DangXuatLabel = new JLabel("ĐĂNG XUẤT");
-        DangXuatLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        DangXuatLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
         // DangXuatLabel.setForeground(Color.white);
         DangXuatLabel.setBounds(80, 22, 160, 30);
         DangXuatPanel.add(DangXuatLabel);
@@ -69,7 +94,6 @@ public class MainFrame extends JFrame {
         JLabel DangXuatIcon = new JLabel(iconDangXuat, JLabel.CENTER);
         DangXuatIcon.setForeground(Color.white);
         DangXuatIcon.setBounds(20, 20, 40, 40);
-
         DangXuatPanel.add(DangXuatIcon);
     }
 
