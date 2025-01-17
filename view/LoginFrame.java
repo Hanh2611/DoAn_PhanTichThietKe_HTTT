@@ -44,15 +44,15 @@ public class LoginFrame extends JFrame {
         leftContent.setLayout(null);
 
         ImageIcon iconThuVien = new ImageIcon(
-                new ImageIcon("./img/train-station.png").getImage().getScaledInstance(210, 210, Image.SCALE_SMOOTH));
+                new ImageIcon("./img/train-station.png").getImage().getScaledInstance(220, 220, Image.SCALE_SMOOTH));
         JLabel ThuVien = new JLabel(iconThuVien, JLabel.CENTER);
-        ThuVien.setBounds(76, 100, 210, 210);
+        ThuVien.setBounds(70, 100, 220, 220);
         leftContent.add(ThuVien);
 
-        JLabel title = new JLabel("QUẢN LÝ LINH KIỆN");
+        JLabel title = new JLabel("<html><div style='text-align: center;'>QUẢN LÝ VẬN HÀNH<br>METRO</div></html>");
         title.setFont(new Font("Segoe UI", Font.BOLD, 26));
         title.setForeground(Color.white);
-        title.setBounds(50, 330, 400, 50);
+        title.setBounds(50, 330, 400, 80);
         leftContent.add(title);
 
         // Them controller
