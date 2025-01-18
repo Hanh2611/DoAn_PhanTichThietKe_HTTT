@@ -13,6 +13,10 @@ import javax.swing.SwingUtilities;
 import controller.MainController;
 
 public class MainFrame extends JFrame {
+    private JPanel TuyenDuongPanel;
+    private JPanel ThongKePanel;
+    private JPanel DangXuatPanel;
+
     public MainFrame() {
         setSize(1200, 800);
         setLocationRelativeTo(null);
@@ -55,7 +59,7 @@ public class MainFrame extends JFrame {
         ChucNangPanel.setLayout(null);
         leftPanel.add(ChucNangPanel);
 
-        JPanel TuyenDuongPanel = new JPanel();
+        TuyenDuongPanel = new JPanel();
         TuyenDuongPanel.setBounds(10, 10, 280, 80);
         TuyenDuongPanel.setLayout(null);
         TuyenDuongPanel.setBackground(Color.decode("#93BFCF"));
@@ -65,7 +69,6 @@ public class MainFrame extends JFrame {
 
         JLabel TuyenDuongLabel = new JLabel("TUYẾN ĐƯỜNG");
         TuyenDuongLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        // TuyenDuongLabel.setForeground(Color.white);
         TuyenDuongLabel.setBounds(80, 22, 160, 30);
         TuyenDuongPanel.add(TuyenDuongLabel);
 
@@ -77,15 +80,36 @@ public class MainFrame extends JFrame {
         TuyenDuongIcon.setBounds(20, 20, 40, 40);
         TuyenDuongPanel.add(TuyenDuongIcon);
 
-        JPanel DangXuatPanel = new JPanel();
+        ThongKePanel = new JPanel();
+        ThongKePanel.setBounds(10, 100, 280, 80);
+        ThongKePanel.setLayout(null);
+        ThongKePanel.setBackground(Color.decode("#93BFCF"));
+        ChucNangPanel.add(ThongKePanel);
+
+        ThongKePanel.addMouseListener(controller);
+
+        JLabel ThongKeLabel = new JLabel("THỐNG KÊ");
+        ThongKeLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        ThongKeLabel.setBounds(80, 22, 160, 30);
+        ThongKePanel.add(ThongKeLabel);
+
+        ImageIcon iconThongKe = new ImageIcon(
+                new ImageIcon("./img/diagram.png").getImage().getScaledInstance(40, 40,
+                        Image.SCALE_SMOOTH));
+        JLabel ThongKeIcon = new JLabel(iconThongKe, JLabel.CENTER);
+        ThongKeIcon.setForeground(Color.white);
+        ThongKeIcon.setBounds(20, 20, 40, 40);
+        ThongKePanel.add(ThongKeIcon);
+
+        DangXuatPanel = new JPanel();
         DangXuatPanel.setBounds(10, 550, 280, 80);
         DangXuatPanel.setLayout(null);
         DangXuatPanel.setBackground(Color.decode("#93BFCF"));
+        DangXuatPanel.addMouseListener(controller);
         ChucNangPanel.add(DangXuatPanel);
 
         JLabel DangXuatLabel = new JLabel("ĐĂNG XUẤT");
         DangXuatLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        // DangXuatLabel.setForeground(Color.white);
         DangXuatLabel.setBounds(80, 22, 160, 30);
         DangXuatPanel.add(DangXuatLabel);
 
@@ -97,6 +121,12 @@ public class MainFrame extends JFrame {
         DangXuatPanel.add(DangXuatIcon);
     }
 
+    public void resetPanel() {
+        TuyenDuongPanel.setBackground(Color.decode("#93BFCF"));
+        ThongKePanel.setBackground(Color.decode("#93BFCF"));
+        DangXuatPanel.setBackground(Color.decode("#93BFCF"));
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -105,4 +135,17 @@ public class MainFrame extends JFrame {
             }
         });
     }
+
+    public JPanel getTuyenDuongPanel() {
+        return TuyenDuongPanel;
+    }
+
+    public JPanel getThongKePanel() {
+        return ThongKePanel;
+    }
+
+    public JPanel getDangXuatPanel() {
+        return DangXuatPanel;
+    }
+
 }

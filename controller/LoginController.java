@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.MouseInputListener;
 
 import view.LoginFrame;
+import view.MainFrame;
 
 public class LoginController implements MouseInputListener {
     private LoginFrame loginFrame;
@@ -18,7 +19,10 @@ public class LoginController implements MouseInputListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == loginFrame.getDangNhapButton()) {
-            JOptionPane.showMessageDialog(loginFrame, "Bạn vừa nhấn vào nút đăng nhập", "Thông báo", 1);
+            JOptionPane.showMessageDialog(loginFrame, "Bạn vừa nhấn vào nút đăng nhập",
+                    "Thông báo", 1);
+            loginFrame.dispose();
+            new MainFrame();
         } else if (e.getSource() == loginFrame.getTaoTaiKhoan()) {
             loginFrame.HienTaoTaiKhoan();
         }
