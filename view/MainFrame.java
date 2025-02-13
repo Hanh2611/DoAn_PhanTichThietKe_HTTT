@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -16,6 +17,10 @@ public class MainFrame extends JFrame {
     private JPanel TuyenDuongPanel;
     private JPanel ThongKePanel;
     private JPanel DangXuatPanel;
+    private JPanel TuyenDuongContent;
+    private JPanel ThongKeContent;
+    private CardLayout cardLayout;
+    private JPanel rightPanel;
 
     public MainFrame() {
         setSize(1200, 800);
@@ -26,16 +31,19 @@ public class MainFrame extends JFrame {
     }
 
     private void init() {
+        JPanel mainPanel = new JPanel();
+        this.setContentPane(mainPanel);
+        mainPanel.setLayout(null);
         JPanel leftPanel = new JPanel();
         leftPanel.setBounds(0, 0, 300, 800);
         leftPanel.setBackground(Color.white);
         leftPanel.setLayout(null);
-        this.add(leftPanel);
+        mainPanel.add(leftPanel);
 
-        JPanel rightPanel = new JPanel();
+        rightPanel = new JPanel();
         rightPanel.setBounds(300, 0, 900, 800);
         rightPanel.setLayout(null);
-        this.add(rightPanel);
+        mainPanel.add(rightPanel);
 
         Color MainColor = Color.decode("#6096B4");
         MainController controller = new MainController(this);
@@ -62,7 +70,7 @@ public class MainFrame extends JFrame {
         TuyenDuongPanel = new JPanel();
         TuyenDuongPanel.setBounds(10, 10, 280, 80);
         TuyenDuongPanel.setLayout(null);
-        TuyenDuongPanel.setBackground(Color.decode("#93BFCF"));
+        TuyenDuongPanel.setBackground(Color.decode("#6096B4"));
         ChucNangPanel.add(TuyenDuongPanel);
 
         TuyenDuongPanel.addMouseListener(controller);
@@ -119,6 +127,20 @@ public class MainFrame extends JFrame {
         DangXuatIcon.setForeground(Color.white);
         DangXuatIcon.setBounds(20, 20, 40, 40);
         DangXuatPanel.add(DangXuatIcon);
+
+        // Phần nội dung bên phải
+        cardLayout = new CardLayout();
+        rightPanel.setLayout(cardLayout);
+
+        TuyenDuongContent = new JPanel();
+        TuyenDuongContent.add(new JLabel("Tuyenduong"));
+        TuyenDuongContent.setBackground(Color.white);
+        rightPanel.add(TuyenDuongContent, "Tuyenduong");
+
+        ThongKeContent = new JPanel();
+        ThongKeContent.add(new JLabel("Thongke"));
+        ThongKeContent.setBackground(Color.white);
+        rightPanel.add(ThongKeContent, "Thongke");
     }
 
     public void resetPanel() {
@@ -146,6 +168,16 @@ public class MainFrame extends JFrame {
 
     public JPanel getDangXuatPanel() {
         return DangXuatPanel;
+    }
+
+    public void showTuyenDuongContent() {
+        // CardLayout cardLayout = (CardLayout) this.getContentPane().getLayout();
+        cardLayout.show(this.rightPanel, "Tuyenduong");
+    }
+
+    public void showThongKeContent() {
+        // CardLayout cardLayout = (CardLayout) this.getContentPane().getLayout();
+        cardLayout.show(this.rightPanel, "Thongke");
     }
 
 }
