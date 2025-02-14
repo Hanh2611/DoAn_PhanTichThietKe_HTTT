@@ -44,7 +44,8 @@ public class LoginFrame extends JFrame {
         leftContent.setLayout(null);
 
         ImageIcon iconThuVien = new ImageIcon(
-                new ImageIcon("./img/train-station.png").getImage().getScaledInstance(220, 220, Image.SCALE_SMOOTH));
+                new ImageIcon("./assets/icons/train-station.png").getImage().getScaledInstance(220, 220,
+                        Image.SCALE_SMOOTH));
         JLabel ThuVien = new JLabel(iconThuVien, JLabel.CENTER);
         ThuVien.setBounds(70, 100, 220, 220);
         leftContent.add(ThuVien);

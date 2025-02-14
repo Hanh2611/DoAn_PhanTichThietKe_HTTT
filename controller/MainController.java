@@ -24,10 +24,15 @@ public class MainController implements MouseInputListener {
             frame.dispose();
             new LoginFrame();
             return;
-        } else if (e.getSource() == frame.getTuyenDuongPanel()) {
+        }
+        if (e.getSource() == frame.getTuyenDuongPanel()) {
             frame.showTuyenDuongContent();
         } else if (e.getSource() == frame.getThongKePanel()) {
             frame.showThongKeContent();
+        } else if (e.getSource() == frame.getLichTrinhPanel()) {
+            frame.showLichTrinhContent();
+        } else if (e.getSource() == frame.getGiaVePanel()) {
+            frame.showGiaVeContent();
         }
         PanelDangChon = ((JPanel) e.getSource());
         frame.resetPanel();

@@ -17,8 +17,12 @@ public class MainFrame extends JFrame {
     private JPanel TuyenDuongPanel;
     private JPanel ThongKePanel;
     private JPanel DangXuatPanel;
+    private JPanel LichTrinhPanel;
+    private JPanel GiaVePanel;
     private JPanel TuyenDuongContent;
     private JPanel ThongKeContent;
+    private JPanel LichTrinhContent;
+    private JPanel GiaVeContent;
     private CardLayout cardLayout;
     private JPanel rightPanel;
 
@@ -81,7 +85,7 @@ public class MainFrame extends JFrame {
         TuyenDuongPanel.add(TuyenDuongLabel);
 
         ImageIcon iconTuyenDuong = new ImageIcon(
-                new ImageIcon("./img/route.png").getImage().getScaledInstance(40, 40,
+                new ImageIcon("./assets/icons/route.png").getImage().getScaledInstance(40, 40,
                         Image.SCALE_SMOOTH));
         JLabel TuyenDuongIcon = new JLabel(iconTuyenDuong, JLabel.CENTER);
         TuyenDuongIcon.setForeground(Color.white);
@@ -102,12 +106,50 @@ public class MainFrame extends JFrame {
         ThongKePanel.add(ThongKeLabel);
 
         ImageIcon iconThongKe = new ImageIcon(
-                new ImageIcon("./img/diagram.png").getImage().getScaledInstance(40, 40,
+                new ImageIcon("./assets/icons/diagram.png").getImage().getScaledInstance(40, 40,
                         Image.SCALE_SMOOTH));
         JLabel ThongKeIcon = new JLabel(iconThongKe, JLabel.CENTER);
         ThongKeIcon.setForeground(Color.white);
         ThongKeIcon.setBounds(20, 20, 40, 40);
         ThongKePanel.add(ThongKeIcon);
+
+        LichTrinhPanel = new JPanel();
+        LichTrinhPanel.setBounds(10, 190, 280, 80);
+        LichTrinhPanel.setLayout(null);
+        LichTrinhPanel.setBackground(Color.decode("#93BFCF"));
+        LichTrinhPanel.addMouseListener(controller);
+        ChucNangPanel.add(LichTrinhPanel);
+
+        JLabel LichTrinhLabel = new JLabel("LỊCH TRÌNH");
+        LichTrinhLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        LichTrinhLabel.setBounds(80, 22, 160, 30);
+        LichTrinhPanel.add(LichTrinhLabel);
+
+        ImageIcon iconLichTrinh = new ImageIcon(
+                new ImageIcon("./assets/icons/train.png").getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
+        JLabel LichTrinhIcon = new JLabel(iconLichTrinh, JLabel.CENTER);
+        LichTrinhIcon.setForeground(Color.white);
+        LichTrinhIcon.setBounds(20, 20, 40, 40);
+        LichTrinhPanel.add(LichTrinhIcon);
+
+        GiaVePanel = new JPanel();
+        GiaVePanel.setBounds(10, 280, 280, 80);
+        GiaVePanel.setLayout(null);
+        GiaVePanel.setBackground(Color.decode("#93BFCF"));
+        GiaVePanel.addMouseListener(controller);
+        ChucNangPanel.add(GiaVePanel);
+
+        JLabel GiaVeLabel = new JLabel("GIÁ VÉ");
+        GiaVeLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        GiaVeLabel.setBounds(80, 22, 160, 30);
+        GiaVePanel.add(GiaVeLabel);
+
+        ImageIcon iconGiaVe = new ImageIcon(
+                new ImageIcon("./assets/icons/ticket.png").getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
+        JLabel GiaVeIcon = new JLabel(iconGiaVe, JLabel.CENTER);
+        GiaVeIcon.setForeground(Color.white);
+        GiaVeIcon.setBounds(20, 20, 40, 40);
+        GiaVePanel.add(GiaVeIcon);
 
         DangXuatPanel = new JPanel();
         DangXuatPanel.setBounds(10, 550, 280, 80);
@@ -122,7 +164,7 @@ public class MainFrame extends JFrame {
         DangXuatPanel.add(DangXuatLabel);
 
         ImageIcon iconDangXuat = new ImageIcon(
-                new ImageIcon("./img/previous.png").getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
+                new ImageIcon("./assets/icons/previous.png").getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
         JLabel DangXuatIcon = new JLabel(iconDangXuat, JLabel.CENTER);
         DangXuatIcon.setForeground(Color.white);
         DangXuatIcon.setBounds(20, 20, 40, 40);
@@ -141,12 +183,24 @@ public class MainFrame extends JFrame {
         ThongKeContent.add(new JLabel("Thongke"));
         ThongKeContent.setBackground(Color.white);
         rightPanel.add(ThongKeContent, "Thongke");
+
+        LichTrinhContent = new JPanel();
+        LichTrinhContent.add(new JLabel("Lichtrinh"));
+        LichTrinhContent.setBackground(Color.white);
+        rightPanel.add(LichTrinhContent, "Lichtrinh");
+
+        GiaVeContent = new JPanel();
+        GiaVeContent.add(new JLabel("Giave"));
+        GiaVeContent.setBackground(Color.white);
+        rightPanel.add(GiaVeContent, "Giave");
     }
 
     public void resetPanel() {
         TuyenDuongPanel.setBackground(Color.decode("#93BFCF"));
         ThongKePanel.setBackground(Color.decode("#93BFCF"));
         DangXuatPanel.setBackground(Color.decode("#93BFCF"));
+        LichTrinhPanel.setBackground(Color.decode("#93BFCF"));
+        GiaVePanel.setBackground(Color.decode("#93BFCF"));
     }
 
     public static void main(String[] args) {
@@ -178,6 +232,22 @@ public class MainFrame extends JFrame {
     public void showThongKeContent() {
         // CardLayout cardLayout = (CardLayout) this.getContentPane().getLayout();
         cardLayout.show(this.rightPanel, "Thongke");
+    }
+
+    public void showLichTrinhContent() {
+        cardLayout.show(this.rightPanel, "Lichtrinh");
+    }
+
+    public void showGiaVeContent() {
+        cardLayout.show(this.rightPanel, "Giave");
+    }
+
+    public JPanel getLichTrinhPanel() {
+        return LichTrinhPanel;
+    }
+
+    public JPanel getGiaVePanel() {
+        return GiaVePanel;
     }
 
 }
